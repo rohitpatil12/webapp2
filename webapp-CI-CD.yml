@@ -45,6 +45,8 @@ stages:
             script: |
               cd $(System.ArtifactsDirectory)
               ls
+              cd warfile
+              ls
         # - task: TomcatDeployment@1
         #   inputs:
         #     TomcatUrl: 'http://20.124.246.229:8080/'
