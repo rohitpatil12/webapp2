@@ -39,6 +39,10 @@ stages:
             downloadType: 'single'
             artifactName: 'warfile'
             downloadPath: '$(System.ArtifactsDirectory)'
+        - task: Bash@3
+          inputs:
+            targetType: 'inline'
+            script: 'ls'
         - task: TomcatDeployment@1
           inputs:
             TomcatUrl: 'http://20.124.246.229:8080/'
