@@ -29,4 +29,21 @@ stages:
           inputs:
             PathtoPublish: '$(Build.ArtifactStagingDirectory)'
             ArtifactName: 'warfile'
-          
+  - stage: Release
+    jobs:
+      - job: Deploy
+        steps:
+        - task: DownloadBuildArtifacts@1
+          inputs:
+            buildType: 'current'
+            downloadType: 'single'
+            artifactName: 'warfile'
+            downloadPath: '$(System.ArtifactsDirectory)'
+        - task: TomcatDeployment@1
+          inputs:
+            TomcatUrl: 'http://20.124.246.229:8080/'
+            Username: 'admin'
+            Password: 'admin'
+            Warfile: '$(System.ArtifactsDirectory)/warfile/webapp-0.0.1-SNAPSHOT.war'
+            Context: '/'
+            ServerVersion: '7OrAbove'
