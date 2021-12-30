@@ -47,11 +47,11 @@ stages:
               ls
               cd warfile
               ls
-        # - task: TomcatDeployment@1
-        #   inputs:
-        #     TomcatUrl: 'http://20.124.246.229:8080/'
-        #     Username: 'admin'
-        #     Password: 'admin'
-        #     Warfile: '$(System.ArtifactsDirectory)/warfile/webapp-0.0.1-SNAPSHOT.war'
-        #     Context: '/'
-        #     ServerVersion: '7OrAbove'
+        - task: TomcatDeployment@1
+          inputs:
+            TomcatUrl: 'http://20.124.246.229:8080/'
+            Username: 'admin'
+            Password: 'admin'
+            Warfile: '$(System.ArtifactsDirectory)/warfile/target/webapp-0.0.1-SNAPSHOT.war'
+            Context: '/'
+            ServerVersion: '7OrAbove'
